@@ -1,151 +1,120 @@
-/* General Styles */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+/* -------------------------
+   COLORS (approx. requested)
+   - Landing (Pantone 425 charcoal): #444444
+   - Nav top (Pantone 418 sardine): #3c3c3c
+   - Stats bottom (Pantone 416 sidewalk): #888888
+   Festive generic colors: used for flashing badges.
+   ------------------------- */
+
+:root{
+  --landing-bg: #444444;
+  --nav-bg: #3c3c3c;
+  --stats-bg: #888888;
+  --module-bg: #555555;
+  --accent: #00bfff;
+  --next-color: #ffcc00;
+  --text-white: #ffffff;
+  --muted: #dddddd;
 }
 
-/* Landing Page */
-.landing-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1581091870623-8a53f93f1d9c') no-repeat center center/cover;
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+body,html{height:100%;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:#111}
+
+/* Landing */
+.landing{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--landing-bg);color:var(--text-white)}
+.landing-box{background:rgba(255,255,255,0.03);padding:48px 56px;border-radius:12px;text-align:center;backdrop-filter: blur(4px)}
+.landing-box h1{font-size:34px;margin-bottom:12px}
+.landing-box p{color:var(--muted);margin-bottom:22px}
+.start-btn{background:white;color:black;border:0;padding:12px 22px;border-radius:8px;font-weight:600;cursor:pointer}
+.start-btn:active{transform:scale(.99)}
+
+/* App wrapper hidden toggles */
+.hidden{display:none}
+
+/* Nav top (sardine gray) */
+.nav-top{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:var(--nav-bg);color:var(--text-white);position:sticky;top:0;z-index:30}
+.brand,.logo{font-weight:700;font-size:18px}
+.nav-right{display:flex;align-items:center;gap:12px}
+
+/* Home button */
+.home-btn{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--text-white);padding:6px 10px;border-radius:6px;cursor:pointer}
+.home-btn:active{animation:flicker .28s}
+
+/* flicker animation */
+@keyframes flicker{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
+
+/* Dropdown look */
+.quiz-dropdown{position:relative}
+.select-wrap{position:relative}
+.select-wrap select{appearance:none;padding:8px 36px 8px 12px;border-radius:6px;border:0;background:white;color:#111;font-weight:600}
+.select-wrap .watermark{position:absolute;left:12px;top:8px;font-size:13px;color:rgba(0,0,0,0.12);pointer-events:none}
+
+/* Stats area (sidewalk gray) */
+.stats-area{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:var(--stats-bg);color:var(--text-white);gap:12px;flex-wrap:wrap}
+.stats-right{display:flex;gap:18px;align-items:center}
+.stat{font-size:14px;color:var(--text-white)}
+
+/* Module area */
+.module-area{background:var(--module-bg);color:var(--text-white);padding:12px 20px;min-height:40vh;transition:all .36s ease}
+.module-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.module-title{font-weight:600}
+.module-actions{display:flex;gap:10px}
+.close-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--text-white);padding:6px 10px;border-radius:6px;cursor:pointer}
+
+/* module body */
+.module-body{background:rgba(255,255,255,0.02);padding:18px;border-radius:10px;min-height:200px;overflow:auto}
+
+/* question card */
+.question-card{background:#666;border-radius:10px;padding:18px;margin-bottom:12px;animation:cardIn .35s;box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.q-text{font-weight:600;margin-bottom:12px}
+.options{display:flex;flex-direction:column;gap:10px}
+.opt-btn{background:#1f77b4;border:0;color:white;padding:12px;border-radius:8px;cursor:pointer;text-align:left;transition:transform .14s,box-shadow .14s}
+.opt-btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,0.45)}
+.opt-btn.correct{background:#28a745}
+.opt-btn.incorrect{background:#c62828;}
+
+/* Next / Prev buttons: festive glow (generic) */
+.controls{display:flex;gap:8px;margin-top:14px;align-items:center}
+.prev-btn,.next-btn{padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
+.prev-btn{background:#888;color:#111}
+.next-btn{background:var(--next-color);color:#111;box-shadow:0 0 10px rgba(255,204,0,0.6);animation:glow 1s infinite alternate}
+@keyframes glow{from{box-shadow:0 0 8px rgba(255,204,0,0.4)}to{box-shadow:0 0 22px rgba(255,204,0,0.9)}}
+
+/* small progress bar */
+.progress-wrap{margin-top:12px}
+.progress-track{height:12px;background:#444;border-radius:8px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#00bfff,#7afcff);width:0%;transition:width .5s ease}
+
+/* badges area with flashing festive colors */
+.badge-strip{display:flex;gap:8px;align-items:center;margin-top:12px}
+.badge{padding:6px 10px;border-radius:8px;background:#333;color:var(--text-white);font-weight:700;opacity:0.95;box-shadow:0 4px 12px rgba(0,0,0,0.4)}
+.badge.flash { animation:flashColors 1.2s infinite; }
+@keyframes flashColors{
+  0%{background:#ff7a7a}
+  25%{background:#ffd56b}
+  50%{background:#8affc1}
+  75%{background:#9fb4ff}
+  100%{background:#ff7a7a}
 }
 
-.landing-content {
-  background: white;
-  padding: 50px 70px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
+/* Certificate styles (black with gold border) */
+.certificate-card{width:800px;max-width:95%;margin:0 auto;background:#000;border:8px solid #c59b00;padding:32px;border-radius:6px;color:#c59b00}
+.cert-title{font-size:28px;margin-bottom:12px}
+.cert-name{font-size:22px;margin:18px 0;padding:8px;border-bottom:2px dashed rgba(197,155,0,0.2);color:#fff;background:transparent;min-height:32px}
+.cert-body{color:#dbc88e;margin-bottom:18px}
+.cert-meta{display:flex;justify-content:space-between;color:#dbc88e;margin-top:18px}
+.cert-seal{margin-top:18px;padding:12px;border-radius:50%;background:linear-gradient(180deg,#b8860b,#8b6508);color:#111;font-weight:900;width:140px;text-align:center;margin-left:auto}
 
-.landing-content h1 {
-  margin-bottom: 20px;
-}
+/* certificate action buttons */
+.cert-actions{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.cert-actions button{padding:8px 12px;border-radius:6px;border:0;cursor:pointer}
 
-.landing-content p {
-  margin-bottom: 30px;
-}
-
-#start-training {
-  padding: 12px 25px;
-  font-size: 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #007BFF;
-  color: white;
-  transition: background 0.3s;
-}
-
-#start-training:hover {
-  background-color: #0056b3;
-}
-
-/* Dashboard */
-.hidden {
-  display: none;
-}
-
-.nav-bar {
-  background-color: #333; /* dark grey */
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.nav-bar .logo {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.nav-bar nav button {
-  background: none;
-  border: none;
-  color: white;
-  margin-left: 15px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.nav-bar nav button:hover {
-  color: #00bfff;
-}
-
-.stats-section {
-  background-color: #777; /* light grey */
-  color: white;
-  padding: 20px 30px;
-}
-
-.stats-section h2 {
-  margin-top: 0;
-}
-
-.module-content {
-  padding: 20px 30px;
-  min-height: 300px;
-}
-
-/* Question Cards */
-.question-card {
-  background-color: #555;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  animation: fadeIn 0.5s;
-}
-
-.options button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background-color: #007BFF;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.options button:hover {
-  transform: scale(1.05);
-}
-
-.next-btn {
-  margin-top: 10px;
-  background-color: #28a745;
-}
-
-.next-btn:hover {
-  background-color: #218838;
-}
-
-.progress-bar-container {
-  background-color: #444;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 10px 0;
-}
-
-.progress-bar {
-  height: 15px;
-  background-color: #00bfff;
-  width: 0%;
-  transition: width 0.5s;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
+/* responsive */
+@media (max-width:720px){
+  .nav-right{gap:6px}
+  .stats-right{flex-wrap:wrap;gap:10px}
+  .certificate-card{padding:16px}
 }
