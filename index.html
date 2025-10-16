@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DefendIQ Training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Landing Page -->
+  <div id="landing-page" class="landing-page">
+    <div class="landing-content">
+      <h1>Welcome to DefendIQ Training!</h1>
+      <p>Boost your Cybersecurity skills by completing interactive modules</p>
+      <button id="start-training">Start Training</button>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="dashboard hidden">
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+      <span class="logo">DefendIQ</span>
+      <nav>
+        <button class="nav-btn" data-module="dashboard">Dashboard</button>
+        <button class="nav-btn" data-module="quiz">Quiz</button>
+        <button class="nav-btn" data-module="phishing">Phishing Simulation</button>
+        <button class="nav-btn" data-module="password">Password Training</button>
+        <button class="nav-btn" data-module="keymessage">Key Message</button>
+        <button class="nav-btn" data-module="deepfake">Deepfake Awareness</button>
+        <button class="nav-btn" data-module="reporting">Reporting Security Incidents</button>
+        <button class="nav-btn" data-module="culture">Culture Survey</button>
+        <button class="nav-btn" data-module="social">Social Engineering</button>
+      </nav>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <h2>Dashboard</h2>
+      <p>Streak: <span id="streak">0</span></p>
+      <p>Points: <span id="points">0</span></p>
+      <p>Completion: <span id="completion">0%</span></p>
+      <p>Badges Earned: <span id="badges">None</span></p>
+    </div>
+
+    <!-- Module Content -->
+    <div id="module-content" class="module-content">
+      <p>Select a module to start training.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

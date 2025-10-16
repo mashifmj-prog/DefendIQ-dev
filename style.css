@@ -1,0 +1,151 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Landing Page */
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1581091870623-8a53f93f1d9c') no-repeat center center/cover;
+}
+
+.landing-content {
+  background: white;
+  padding: 50px 70px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.landing-content h1 {
+  margin-bottom: 20px;
+}
+
+.landing-content p {
+  margin-bottom: 30px;
+}
+
+#start-training {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  transition: background 0.3s;
+}
+
+#start-training:hover {
+  background-color: #0056b3;
+}
+
+/* Dashboard */
+.hidden {
+  display: none;
+}
+
+.nav-bar {
+  background-color: #333; /* dark grey */
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.nav-bar .logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nav-bar nav button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-bar nav button:hover {
+  color: #00bfff;
+}
+
+.stats-section {
+  background-color: #777; /* light grey */
+  color: white;
+  padding: 20px 30px;
+}
+
+.stats-section h2 {
+  margin-top: 0;
+}
+
+.module-content {
+  padding: 20px 30px;
+  min-height: 300px;
+}
+
+/* Question Cards */
+.question-card {
+  background-color: #555;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s;
+}
+
+.options button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.options button:hover {
+  transform: scale(1.05);
+}
+
+.next-btn {
+  margin-top: 10px;
+  background-color: #28a745;
+}
+
+.next-btn:hover {
+  background-color: #218838;
+}
+
+.progress-bar-container {
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 15px;
+  background-color: #00bfff;
+  width: 0%;
+  transition: width 0.5s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
