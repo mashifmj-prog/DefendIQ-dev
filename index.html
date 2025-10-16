@@ -1,53 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DefendIQ Training</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DefendIQ — Training</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- html2canvas & jsPDF for certificate export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
-  <!-- Landing Page -->
-  <div id="landing-page" class="landing-page">
-    <div class="landing-content">
+  <!-- LANDING (Pantone 425 charcoal gray background, white text) -->
+  <section id="landing" class="landing">
+    <div class="landing-box">
       <h1>Welcome to DefendIQ Training!</h1>
-      <p>Boost your Cybersecurity skills by completing interactive modules</p>
-      <button id="start-training">Start Training</button>
+      <p>Boost your cybersecurity skills by completing interactive modules</p>
+      <button id="startBtn" class="start-btn">Start Training</button>
     </div>
-  </div>
+  </section>
 
-  <!-- Dashboard -->
-  <div id="dashboard" class="dashboard hidden">
+  <!-- DASHBOARD (hidden until start) -->
+  <section id="app" class="hidden">
 
-    <!-- Navigation Bar -->
-    <div class="nav-bar">
-      <span class="logo">DefendIQ</span>
-      <nav>
-        <button class="nav-btn" data-module="dashboard">Dashboard</button>
-        <button class="nav-btn" data-module="quiz">Quiz</button>
-        <button class="nav-btn" data-module="phishing">Phishing Simulation</button>
-        <button class="nav-btn" data-module="password">Password Training</button>
-        <button class="nav-btn" data-module="keymessage">Key Message</button>
-        <button class="nav-btn" data-module="deepfake">Deepfake Awareness</button>
-        <button class="nav-btn" data-module="reporting">Reporting Security Incidents</button>
-        <button class="nav-btn" data-module="culture">Culture Survey</button>
-        <button class="nav-btn" data-module="social">Social Engineering</button>
-      </nav>
+    <!-- NAV (sardine gray - top) -->
+    <header class="nav-top">
+      <div class="nav-left">
+        <span class="brand">DefendIQ</span>
+      </div>
+
+      <div class="nav-right">
+        <button id="homeBtn" class="home-btn" title="Back to landing">Home</button>
+
+        <div class="quiz-dropdown">
+          <label class="dropdown-label">Quiz</label>
+          <div class="select-wrap">
+            <select id="moduleSelect">
+              <option value="" selected disabled hidden>Select your module</option>
+              <option value="quiz">Quiz</option>
+              <option value="phishing">Phishing Simulation</option>
+              <option value="password">Password Training</option>
+              <option value="keymessage">Key Message</option>
+              <option value="deepfake">Deepfake Awareness</option>
+              <option value="reporting">Reporting Security Incidents</option>
+              <option value="culture">Culture Survey</option>
+              <option value="social">Social Engineering</option>
+              <option value="exit">Exit</option>
+            </select>
+            <div class="watermark">Select your module</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- STATS (sidewalk gray - bottom of top part) -->
+    <div class="stats-area">
+      <div class="stats-left">
+        <h2>Dashboard</h2>
+      </div>
+      <div class="stats-right">
+        <div class="stat">Streak: <span id="streak">0</span></div>
+        <div class="stat">Points: <span id="points">0</span></div>
+        <div class="stat">Completion: <span id="completion">0%</span></div>
+        <div class="stat">Badges Earned: <span id="badges">None</span></div>
+      </div>
     </div>
 
-    <!-- Stats Section -->
-    <div class="stats-section">
-      <h2>Dashboard</h2>
-      <p>Streak: <span id="streak">0</span></p>
-      <p>Points: <span id="points">0</span></p>
-      <p>Completion: <span id="completion">0%</span></p>
-      <p>Badges Earned: <span id="badges">None</span></p>
-    </div>
+    <!-- MODULE AREA (thin bottom area with DefendIQ message by default) -->
+    <main class="module-area">
+      <div id="moduleHeader" class="module-header">
+        <div class="module-title">DefendIQ: Your trusted partner in training</div>
+        <div class="module-actions">
+          <button id="closeModuleBtn" class="close-btn" title="Close module">Close</button>
+        </div>
+      </div>
 
-    <!-- Module Content -->
-    <div id="module-content" class="module-content">
-      <p>Select a module to start training.</p>
+      <div id="moduleBody" class="module-body">
+        <!-- default content -->
+        <div class="welcome-message">Select a module to start training</div>
+      </div>
+    </main>
+  </section>
+
+  <!-- CERTIFICATE TEMPLATE (hidden) -->
+  <div id="certificateTemplate" class="certificate-template hidden">
+    <div class="certificate-card" id="certificateCard">
+      <div class="cert-inner">
+        <h1 class="cert-title">Certificate of Appreciation</h1>
+        <div contenteditable="true" id="certName" class="cert-name" aria-label="Recipient name">Name Surname</div>
+        <p class="cert-body">This certificate formally recognizes the successful completion of the training module.</p>
+        <div class="cert-meta">
+          <div>Date: <span id="certDate"></span></div>
+          <div>Signature: ____________________</div>
+        </div>
+        <div class="cert-seal">GRAND AWARD</div>
+      </div>
     </div>
   </div>
 
