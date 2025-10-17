@@ -1,0 +1,37 @@
+{
+  "keymessage": {
+    "title": "Key Message",
+    "points": [
+      "Understand the importance of cybersecurity awareness.",
+      "Recognize common threats like phishing and malware.",
+      "Learn to protect sensitive information."
+    ],
+    "questions": [
+      {
+        "q": "What is a key aspect of cybersecurity?",
+        "opts": ["Ignoring emails", "Strong passwords", "Sharing passwords", "Using public Wi-Fi"],
+        "a": 1
+      },
+      {
+        "q": "What should you do if you receive a suspicious email?",
+        "opts": ["Click all links", "Reply immediately", "Report to IT", "Forward to friends"],
+        "a": 2
+      }
+    ]
+  },
+  "deepfake": {
+    "title": "Deepfake Awareness",
+    "points": [
+      "Identify signs of deepfake media.",
+      "Verify sources before trusting content.",
+      "Use tools to detect manipulated media."
+    ],
+    "questions": [
+      {
+        "q": "What is a deepfake?",
+        "opts": ["A secure email", "Fake media using AI", "A type of firewall", "A strong password"],
+        "a": 1
+      }
+    ]
+  }
+}
